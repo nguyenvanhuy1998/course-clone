@@ -18,7 +18,7 @@ export default function TabsLayout() {
                 options={{
                     title: "Khóa học",
                     tabBarIcon: ({ color }) => (
-                        <FontAwesome name="home" size={24} color={color} />
+                        <FontAwesome name="book" size={24} color={color} />
                     ),
                 }}
             />
@@ -27,7 +27,11 @@ export default function TabsLayout() {
                 options={{
                     title: "Videos",
                     tabBarIcon: ({ color }) => (
-                        <FontAwesome name="home" size={24} color={color} />
+                        <FontAwesome
+                            name="play-circle"
+                            size={24}
+                            color={color}
+                        />
                     ),
                 }}
             />
@@ -36,7 +40,7 @@ export default function TabsLayout() {
                 options={{
                     title: "Tôi",
                     tabBarIcon: ({ color }) => (
-                        <FontAwesome name="home" size={24} color={color} />
+                        <FontAwesome name="user" size={24} color={color} />
                     ),
                 }}
             />

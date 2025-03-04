@@ -1,4 +1,4 @@
-import { StyleSheet, Text as RNText, View } from "react-native";
+import { View, Text as RNText } from "react-native";
 import React from "react";
 
 const Text = () => {
@@ -10,5 +10,3 @@ const Text = () => {
 };
 
 export default Text;
-
-const styles = StyleSheet.create({});

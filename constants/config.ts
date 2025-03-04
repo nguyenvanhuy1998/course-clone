@@ -1,48 +1,18 @@
+import { API_CONFIG } from "@/api";
+
 export const config = {
     // API Configuration
-    api: {
-        baseURL: "https://api.yourapp.com",
-        version: "v1",
-        timeout: 10000,
-        endpoints: {
-            auth: {
-                login: "/auth/login",
-                register: "/auth/register",
-                logout: "/auth/logout",
-                refresh: "/auth/refresh",
-            },
-            user: {
-                profile: "/user/profile",
-                update: "/user/update",
-                avatar: "/user/avatar",
-            },
-            courses: {
-                list: "/courses",
-                detail: "/courses/:id",
-                lessons: "/courses/:id/lessons",
-            },
-            resources: {
-                videos: "/resources/videos",
-                documents: "/resources/documents",
-            },
-        },
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "Accept-Language": "vi",
-        },
-    },
-
+    api: API_CONFIG,
     // Storage Keys
     storage: {
         keys: {
-            authToken: "@auth_token",
-            refreshToken: "@refresh_token",
-            user: "@user_data",
-            theme: "@app_theme",
-            language: "@app_language",
-            onboarding: "@onboarding_completed",
-            courseProgress: "@course_progress",
+            accessToken: "access_token",
+            refreshToken: "refresh_token",
+            user: "user_data",
+            theme: "app_theme",
+            language: "app_language",
+            onboarding: "onboarding_completed",
+            courseProgress: "course_progress",
         },
     },
 
