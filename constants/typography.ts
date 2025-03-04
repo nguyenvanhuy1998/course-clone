@@ -121,15 +121,16 @@ export const typography = {
         bold: "700",
     },
 };
-// Helper types
-export type HeadingType = keyof typeof typography.heading;
-export type BodyType = keyof typeof typography.body;
-export type ButtonType = keyof typeof typography.button;
-export type LabelType = keyof typeof typography.label;
 
 // Helper types
-type TypographyType = "heading" | "body" | "button" | "label";
-type VariantType = HeadingType | BodyType | ButtonType | LabelType;
+export type VariantType =
+    | keyof typeof typography.heading
+    | keyof typeof typography.body
+    | keyof typeof typography.button
+    | keyof typeof typography.label
+    | "caption"
+    | "overline";
+export type TypographyType = "heading" | "body" | "button" | "label";
 // Utility function with proper typing
 export const getFontStyles = (type: TypographyType, variant: VariantType) =>
     typography[type][variant as keyof (typeof typography)[typeof type]];
