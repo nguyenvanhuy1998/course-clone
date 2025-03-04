@@ -1,30 +1,58 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { useTheme } from "@/hooks";
+import { useErrorBoundary, useTheme } from "@/hooks";
+import React, { useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+export const BuggyButton = () => {
+    const [count, setCount] = useState(0);
+    const { colors } = useTheme();
+    const { throwError } = useErrorBoundary();
+
+    if (count === 5) {
+        // Cố tình tạo lỗi khi count = 5
+        throwError(new Error("Đã xảy ra lỗi khi nhấn nút 5 lần!"));
+    }
+
+    return (
+        <TouchableOpacity
+            style={[styles.button, { backgroundColor: colors.primary }]}
+            onPress={() => setCount((c) => c + 1)}
+        >
+            <Text style={[styles.text, { color: colors.text.inverse }]}>
+                Nhấn {5 - count} lần nữa để tạo lỗi
+            </Text>
+        </TouchableOpacity>
+    );
+};
 const OnboardingScreen = () => {
     const { colors } = useTheme();
+
     return (
         <View
-            style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: colors.background.default,
-            }}
+            style={[
+                styles.container,
+                { backgroundColor: colors.background.default },
+            ]}
         >
-            <Text
-                style={{
-                    fontSize: 30,
-                    color: colors.text.primary,
-                }}
-            >
-                OnboardingScreen
-            </Text>
+            <BuggyButton />
         </View>
     );
 };
 
 export default OnboardingScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    button: {
+        padding: 12,
+        borderRadius: 8,
+        marginTop: 20,
+    },
+    text: {
+        fontSize: 16,
+        fontWeight: "600",
+    },
+});
