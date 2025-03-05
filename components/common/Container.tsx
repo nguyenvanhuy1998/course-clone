@@ -1,11 +1,11 @@
 import { shadows, spacing } from "@/constants";
 import { useTheme } from "@/hooks";
+import { commonStyles } from "@/styles";
 import React from "react";
 import {
     ActivityIndicator,
     RefreshControl,
     ScrollView,
-    StyleSheet,
     View,
     ViewProps,
 } from "react-native";
@@ -50,20 +50,20 @@ const Container = ({
 }: ContainerProps) => {
     const { colors } = useTheme();
     const containerStyle = [
-        styles.container,
+        commonStyles.flex1,
         {
             backgroundColor: backgroundColor || colors.background.default,
             padding: spacing[padding],
         },
         elevated && shadows.small,
-        center && styles.center,
+        center && commonStyles.center,
         style,
     ];
     const renderContent = () => {
         if (loading) {
             return (
                 LoadingComponent || (
-                    <View style={styles.loadingContainer}>
+                    <View style={[commonStyles.center, commonStyles.flex1]}>
                         <ActivityIndicator
                             size={"large"}
                             color={colors.primary}
@@ -75,10 +75,10 @@ const Container = ({
         if (keyboardAware) {
             return (
                 <KeyboardAwareScrollView
-                    style={styles.scrollView}
+                    style={commonStyles.flex1}
                     contentContainerStyle={[
-                        styles.scrollContent,
-                        center && styles.center,
+                        commonStyles.flex1,
+                        center && commonStyles.center,
                         contentContainerStyle,
                     ]}
                     showsVerticalScrollIndicator={showsVerticalScrollIndicator}
@@ -87,6 +87,7 @@ const Container = ({
                             <RefreshControl
                                 refreshing={refreshing}
                                 onRefresh={onRefresh}
+                                colors={[colors.primary]}
                             />
                         ) : undefined
                     }
@@ -101,10 +102,10 @@ const Container = ({
         if (scroll) {
             return (
                 <ScrollView
-                    style={styles.scrollView}
+                    style={commonStyles.flex1}
                     contentContainerStyle={[
-                        styles.scrollContent,
-                        center && styles.center,
+                        commonStyles.flex1,
+                        center && commonStyles.center,
                         contentContainerStyle,
                     ]}
                     showsVerticalScrollIndicator={showsVerticalScrollIndicator}
@@ -113,6 +114,7 @@ const Container = ({
                             <RefreshControl
                                 refreshing={refreshing}
                                 onRefresh={onRefresh}
+                                colors={[colors.primary]}
                             />
                         ) : undefined
                     }
@@ -132,27 +134,6 @@ const Container = ({
         </Wrapper>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    center: {
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    scrollView: {
-        flex: 1,
-    },
-    scrollContent: {
-        flexGrow: 1,
-    },
-    loadingContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-});
 
 Container.displayName = "Container";
 export default Container;
