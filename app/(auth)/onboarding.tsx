@@ -1,7 +1,13 @@
-import { Text } from "@/components";
+import { Container, Text } from "@/components";
 import { useErrorBoundary, useTheme } from "@/hooks";
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+    Button,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 // export const BuggyButton = () => {
 //     const [count, setCount] = useState(0);
@@ -27,17 +33,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 const OnboardingScreen = () => {
     const { colors } = useTheme();
 
-    return (
-        <View
-            style={[
-                styles.container,
-                { backgroundColor: colors.background.default },
-            ]}
-        >
-            {/* Error Boundary */}
-            {/* <BuggyButton /> */}
-        </View>
-    );
+    return <Text>123</Text>;
 };
 
 export default OnboardingScreen;

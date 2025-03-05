@@ -58,23 +58,6 @@ export const metrics = {
         default: 49,
     }),
 
-    // Device specific margins and paddings
-    safeAreaInsets: {
-        top: Platform.select({
-            ios: isIphoneX() ? 44 : 20,
-            android: StatusBar.currentHeight,
-            default: 0,
-        }),
-        bottom: Platform.select({
-            ios: isIphoneX() ? 34 : 0,
-            default: 0,
-        }),
-        horizontal: Platform.select({
-            ios: isIphoneX() ? 16 : 0,
-            default: 0,
-        }),
-    },
-
     // Breakpoints
     breakpoints: {
         phone: 0,
